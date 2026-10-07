@@ -3,1110 +3,1270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sage & Stone Landscaping — Ground, elevated.</title>
-<meta name="description" content="Sage & Stone is a full-service residential landscape design and build firm serving St. Mary's County, Maryland. Quietly considered outdoor spaces, built to last.">
-<meta name="theme-color" content="#0A0F0A">
+<title>Copperleaf Grounds Co. | Fall Cleanup &amp; Leaf Removal</title>
+<meta name="description" content="Copperleaf Grounds Co. handles leaf removal, gutter cleaning, aeration, fall plantings, winterization and holiday lighting for homes across the Brandywine Valley.">
+<meta name="theme-color" content="#EDEEE8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101612" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Copperleaf Grounds Co. | Fall Cleanup &amp; Leaf Removal">
+<meta property="og:description" content="Leaf removal, gutters, plantings and winter prep. One crew, start to finish.">
+<meta property="og:image" content="images/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23B8501A'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='17' fill='%23FFF6EE' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="preload" as="image" href="images/hero.webp" imagesrcset="images/hero-1100.webp 1100w, images/hero.webp 2000w" imagesizes="(min-width: 960px) 58vw, 100vw">
+
+<!-- Apply a saved theme choice before paint to avoid a flash -->
+<script>
+  try { var t = localStorage.getItem('cl-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  document.documentElement.classList.add('js');
+</script>
 
 <style>
-/* ============ RESET & BASE ============ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; }
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-.lenis.lenis-stopped { overflow: clip; }
-
+/* =========================================================
+   TOKENS
+   Shape system: buttons and chips are full pill, cards and
+   photos use --r-lg, inputs use --r-md. Nothing else.
+   ========================================================= */
 :root {
-  --bg: #0A0F0A;
-  --surface: #101610;
-  --surface-2: #141C14;
-  --accent: #A3E635;
-  --accent-dim: rgba(163, 230, 53, 0.12);
-  --accent-glow: rgba(163, 230, 53, 0.25);
-  --text: #F5F3EE;
-  --muted: rgba(245, 243, 238, 0.6);
-  --muted-2: rgba(245, 243, 238, 0.42);
-  --hairline: rgba(255, 255, 255, 0.08);
-  --hairline-bright: rgba(255, 255, 255, 0.18);
-  --glass: rgba(255, 255, 255, 0.03);
-  --radius: 24px;
-  --radius-sm: 12px;
-  --content: 1200px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --display-font: 'Fraunces', Georgia, serif;
-  --body-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --bg: #EDEEE8;
+  --surface: #E3E5DD;
+  --surface-2: #D8DBD0;
+  --card: #F6F6F2;
+  --ink: #18201B;
+  --ink-2: #3E4840;
+  --muted: #5A645C;
+  --line: rgba(24, 32, 27, 0.12);
+  --line-strong: rgba(24, 32, 27, 0.22);
+  --accent: #B8501A;
+  --accent-ink: #FFF6EE;
+  --accent-soft: rgba(184, 80, 26, 0.10);
+  --accent-text: #A04414;
+  --evergreen: #1F3A2C;
+  --evergreen-ink: #EEF1EA;
+  --shadow: 0 1px 2px rgba(31, 58, 44, 0.06), 0 12px 32px -12px rgba(31, 58, 44, 0.18);
+  --r-lg: 22px;
+  --r-md: 14px;
+  --max: 1280px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --body: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color-scheme: light;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101612;
+    --surface: #161E19;
+    --surface-2: #1D2720;
+    --card: #19221C;
+    --ink: #ECEEE7;
+    --ink-2: #C9CFC6;
+    --muted: #9DA79E;
+    --line: rgba(236, 238, 231, 0.10);
+    --line-strong: rgba(236, 238, 231, 0.20);
+    --accent: #E5733A;
+    --accent-ink: #1A0F08;
+    --accent-soft: rgba(229, 115, 58, 0.14);
+    --accent-text: #F08A55;
+    --evergreen: #22392C;
+    --evergreen-ink: #EEF1EA;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 40px -16px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101612;
+  --surface: #161E19;
+  --surface-2: #1D2720;
+  --card: #19221C;
+  --ink: #ECEEE7;
+  --ink-2: #C9CFC6;
+  --muted: #9DA79E;
+  --line: rgba(236, 238, 231, 0.10);
+  --line-strong: rgba(236, 238, 231, 0.20);
+  --accent: #E5733A;
+  --accent-ink: #1A0F08;
+  --accent-soft: rgba(229, 115, 58, 0.14);
+  --accent-text: #F08A55;
+  --evergreen: #22392C;
+  --evergreen-ink: #EEF1EA;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 40px -16px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
 body {
-  font-family: var(--body-font);
   background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  font-size: 1rem;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
+  transition: background-color .4s var(--ease), color .4s var(--ease);
 }
-
-::selection { background: var(--accent); color: var(--bg); }
-
-img, svg { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
-/* ============ FILM GRAIN OVERLAY ============ */
-.grain-overlay {
-  position: fixed;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grainShift 8s steps(6) infinite;
-}
-@keyframes grainShift {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -5%); }
-  20% { transform: translate(-10%, 5%); }
-  30% { transform: translate(5%, -10%); }
-  40% { transform: translate(-5%, 15%); }
-  50% { transform: translate(-10%, 5%); }
-  60% { transform: translate(15%, 0); }
-  70% { transform: translate(0, 10%); }
-  80% { transform: translate(-15%, 0); }
-  90% { transform: translate(10%, 5%); }
-}
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: clamp(72px, 10vw, 128px); }
 
-/* ============ LAYOUT HELPERS ============ */
-.container { max-width: var(--content); margin: 0 auto; padding: 0 1.5rem; width: 100%; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; letter-spacing: -0.025em; line-height: 1.04; text-wrap: balance; }
+h2 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); }
+h3 { font-size: 1.35rem; letter-spacing: -0.015em; line-height: 1.15; }
+.lede { color: var(--muted); font-size: 1.125rem; max-width: 56ch; margin-top: 18px; text-wrap: pretty; }
 .eyebrow {
-  font-family: var(--body-font);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-text);
 }
-.eyebrow .dot { color: var(--accent); margin: 0 0.5em; }
-
-.section-label { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
-.section-label::before {
-  content: ''; width: 24px; height: 1px; background: var(--accent); display: block;
-}
-.section-label span {
-  font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);
-}
-
-.section-headline {
-  font-family: var(--display-font);
-  font-weight: 300;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  max-width: 18ch;
-}
-
-/* ============ FOCUS STYLES ============ */
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ============ NAV ============ */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(10, 15, 10, 0.55);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border-bottom: 1px solid var(--hairline);
-  transition: padding 0.3s var(--ease), background 0.3s var(--ease);
-}
-.nav-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: var(--content); margin: 0 auto;
-  padding: 1.25rem 1.5rem;
-  transition: padding 0.3s var(--ease);
-}
-.nav.scrolled .nav-inner { padding: 0.85rem 1.5rem; }
-.nav.scrolled { background: rgba(10, 15, 10, 0.72); }
-
-.wordmark {
-  font-family: var(--display-font);
-  font-weight: 600;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  line-height: 1;
-}
-.wordmark .amp { color: var(--accent); font-weight: 300; }
-
-.nav-links {
-  display: flex; align-items: center; gap: 2rem;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 0.875rem; font-weight: 400; color: var(--muted);
-  position: relative; padding: 0.25rem 0;
-  transition: color 0.2s var(--ease);
-}
-.nav-links a::after {
-  content: ''; position: absolute; left: 0; bottom: 0;
-  width: 100%; height: 1px; background: var(--accent);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s var(--ease);
-}
-.nav-links a:hover { color: var(--text); }
-.nav-links a:hover::after { transform: scaleX(1); }
-
-.nav-pill {
-  font-size: 0.8rem; font-weight: 500;
-  padding: 0.55rem 1.1rem; border-radius: 100px;
-  background: var(--accent); color: var(--bg);
-  transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease);
-}
-.nav-pill:hover { transform: scale(1.04); box-shadow: 0 0 20px var(--accent-glow); }
-
-.nav-toggle {
-  display: none; flex-direction: column; gap: 5px; z-index: 1001;
-  width: 28px; height: 22px; justify-content: center;
-}
-.nav-toggle span {
-  display: block; height: 1.5px; background: var(--text);
-  transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
-}
-.nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* Mobile overlay menu */
-.mobile-menu {
-  position: fixed; inset: 0; z-index: 1000;
-  background: var(--bg);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 2rem; opacity: 0; pointer-events: none;
-  transition: opacity 0.4s var(--ease);
-}
-.mobile-menu.open { opacity: 1; pointer-events: auto; }
-.mobile-menu a {
-  font-family: var(--display-font); font-weight: 300;
-  font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1; color: var(--text);
-  opacity: 0; transform: translateY(20px);
-  transition: color 0.2s var(--ease);
-}
-.mobile-menu.open a {
-  animation: mobileLinkReveal 0.5s var(--ease) forwards;
-}
-.mobile-menu.open a:nth-child(1) { animation-delay: 0.1s; }
-.mobile-menu.open a:nth-child(2) { animation-delay: 0.18s; }
-.mobile-menu.open a:nth-child(3) { animation-delay: 0.26s; }
-.mobile-menu.open a:nth-child(4) { animation-delay: 0.34s; }
-.mobile-menu.open a:nth-child(5) { animation-delay: 0.42s; }
-@keyframes mobileLinkReveal { to { opacity: 1; transform: translateY(0); } }
-.mobile-menu a:hover { color: var(--accent); }
-.mobile-menu .mobile-pill {
-  font-size: 0.9rem; font-family: var(--body-font); font-weight: 500;
-  padding: 0.7rem 1.8rem; border-radius: 100px;
-  background: var(--accent); color: var(--bg);
-}
-
-@media (max-width: 860px) {
-  .nav-links, .nav-pill { display: none; }
-  .nav-toggle { display: flex; }
-}
-
-/* ============ HERO ============ */
-.hero {
-  position: relative; min-height: 100vh; min-height: 100svh;
-  display: flex; align-items: center; overflow: hidden;
-}
-#hero-canvas {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0; pointer-events: none;
-}
-.hero-content {
-  position: relative; z-index: 1;
-  max-width: var(--content); margin: 0 auto;
-  padding: 8rem 1.5rem 6rem; width: 100%;
-}
-.hero-eyebrow {
-  margin-bottom: 1.75rem; opacity: 0; transform: translateY(20px);
-}
-.hero-eyebrow .lime { color: var(--accent); }
-
-.hero-headline {
-  font-family: var(--display-font);
-  font-weight: 300;
-  font-size: clamp(3.5rem, 9vw, 8rem);
-  line-height: 0.95; letter-spacing: -0.03em;
-  color: var(--text);
-  margin-bottom: 2rem;
-}
-.hero-headline .word-mask {
-  display: inline-block; overflow: hidden; vertical-align: top;
-  padding-bottom: 0.08em; margin-bottom: -0.08em;
-}
-.hero-headline .word-inner {
-  display: inline-block; transform: translateY(110%);
-}
-.hero-headline .word-inner em {
-  font-style: italic; font-weight: 300; color: var(--accent);
-}
-
-.hero-sub {
-  font-size: 1.125rem; line-height: 1.7; max-width: 48ch;
-  color: var(--muted); margin-bottom: 2.5rem;
-  opacity: 0; transform: translateY(20px);
-}
-
-.hero-ctas {
-  display: flex; gap: 1rem; flex-wrap: wrap;
-  opacity: 0; transform: translateY(20px);
-}
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; z-index: 100; }
+.skip:focus { left: 8px; }
 
 /* Buttons */
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--body-font); font-size: 0.9rem; font-weight: 500;
-  padding: 0.95rem 1.6rem; border-radius: 100px;
-  background: var(--accent); color: var(--bg);
-  transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease);
-  box-shadow: 0 0 0 var(--accent-glow);
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 52px; padding-inline: 24px; border-radius: 999px;
+  font-weight: 600; font-size: 1rem; white-space: nowrap;
+  transition: transform .25s var(--ease), background-color .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
 }
-.btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 28px var(--accent-glow); }
-.btn-primary .arrow { transition: transform 0.2s var(--ease); }
-.btn-primary:hover .arrow { transform: translateX(3px); }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: color-mix(in oklab, var(--accent) 88%, var(--ink)); }
+.btn-primary .ph { transition: transform .3s var(--ease); }
+.btn-primary:hover .ph { transform: translateX(3px); }
+.btn-ghost { border: 1.5px solid var(--line-strong); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-sm { height: 44px; padding-inline: 18px; font-size: 0.9375rem; }
 
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--body-font); font-size: 0.9rem; font-weight: 500;
-  padding: 0.95rem 1.6rem; border-radius: 100px;
-  border: 1px solid var(--hairline-bright); color: var(--text);
-  background: transparent;
-  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
-}
-.btn-ghost:hover { border-color: var(--text); background: rgba(255,255,255,0.04); }
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-  z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
-}
-.scroll-line {
-  width: 1px; height: 40px; background: var(--hairline-bright);
-  position: relative; overflow: hidden;
-}
-.scroll-line::after {
-  content: ''; position: absolute; top: 0; left: 0;
-  width: 100%; height: 40%; background: var(--accent);
-  animation: scrollDown 2s var(--ease) infinite;
-}
-@keyframes scrollDown {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(250%); }
+/* Reveal (only when JS runs and motion is allowed) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
 }
 
-/* ============ MARQUEE ============ */
-.marquee {
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  overflow: hidden; white-space: nowrap;
-  padding: 1.25rem 0;
+/* =========================================================
+   NAV
+   ========================================================= */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  transition: background-color .3s var(--ease), box-shadow .3s var(--ease);
 }
-.marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee-track {
-  display: inline-flex; align-items: center;
-  animation: marquee 28s linear infinite;
-  will-change: transform;
+.nav.is-stuck {
+  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  box-shadow: 0 1px 0 var(--line);
 }
-.marquee-item {
-  font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--muted); padding: 0 2rem;
+.nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; }
+.brand-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 19px; }
+.brand small { font-family: var(--body); font-weight: 500; color: var(--muted); font-size: 0.8rem; letter-spacing: 0; margin-left: 2px; }
+.nav-links { display: flex; align-items: center; gap: 30px; font-size: 0.9375rem; font-weight: 500; color: var(--ink-2); }
+.nav-links a { position: relative; padding-block: 6px; }
+.nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.icon-btn { width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; font-size: 20px; color: var(--ink-2); border: 1.5px solid var(--line); transition: border-color .25s, color .25s; }
+.icon-btn:hover { border-color: var(--line-strong); color: var(--ink); }
+.theme-toggle .ph-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .ph-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .ph-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .ph-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .ph-moon { display: none; }
 }
-.marquee-dot { color: var(--accent); font-size: 0.6rem; }
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.menu-btn { display: none; }
+
+.mobile-menu {
+  position: fixed; inset: 72px 0 auto 0; z-index: 49;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding: 12px var(--gutter) 28px;
+  display: grid; gap: 4px;
+  transform: translateY(-8px); opacity: 0; visibility: hidden;
+  transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+}
+.mobile-menu.is-open { opacity: 1; transform: none; visibility: visible; }
+.mobile-menu a:not(.btn) { padding: 14px 4px; font-family: var(--display); font-size: 1.5rem; font-weight: 600; border-bottom: 1px solid var(--line); }
+.mobile-menu .btn { margin-top: 18px; }
+
+@media (max-width: 960px) {
+  .nav-links, .nav-actions .btn { display: none; }
+  .menu-btn { display: grid; }
 }
 
-/* ============ SECTIONS ============ */
-section { padding: clamp(5rem, 12vh, 10rem) 0; }
-
-/* Services */
-.services-head {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  gap: 2rem; flex-wrap: wrap; margin-bottom: 4rem;
+/* =========================================================
+   HERO (asymmetric split)
+   ========================================================= */
+.hero { padding-top: clamp(24px, 4vw, 56px); padding-bottom: clamp(48px, 6vw, 80px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero h1 { font-size: clamp(2.75rem, 6.2vw, 5.4rem); line-height: 0.98; letter-spacing: -0.035em; margin-top: 20px; }
+.hero h1 em { font-style: normal; color: var(--accent-text); }
+.hero .lede { font-size: clamp(1.0625rem, 1.4vw, 1.2rem); margin-top: 24px; max-width: 34ch; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.hero-media { position: relative; }
+.hero-photo { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 3.3; background: var(--surface-2); box-shadow: var(--shadow); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.hero-inset {
+  position: absolute; left: clamp(-56px, -4vw, -24px); bottom: clamp(-48px, -4vw, -24px);
+  width: clamp(130px, 22%, 210px); aspect-ratio: 4 / 5;
+  border-radius: var(--r-lg); overflow: hidden;
+  border: 6px solid var(--bg); box-shadow: var(--shadow); background: var(--surface-2);
 }
-.services-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+.hero-inset img { width: 100%; height: 100%; object-fit: cover; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo img { animation: heroIn 1.6s var(--ease) both; }
+  .hero-inset { animation: insetIn 1.2s .35s var(--ease) both; }
+  @keyframes heroIn { from { transform: scale(1.08); } to { transform: scale(1); } }
+  @keyframes insetIn { from { opacity: 0; transform: translateY(24px) rotate(-3deg); } to { opacity: 1; transform: none; } }
+  @supports (animation-timeline: view()) {
+    .hero-photo img { animation: heroIn 1.6s var(--ease) both, heroDrift linear both; animation-timeline: auto, view(); animation-range: normal, exit 0% exit 100%; }
+    @keyframes heroDrift { to { transform: scale(1.06) translateY(4%); } }
+  }
 }
-@media (max-width: 860px) { .services-grid { grid-template-columns: 1fr; } }
-
-.service-card {
-  background: var(--glass);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  padding: 2.5rem 2rem;
-  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.4s var(--ease);
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero .lede { max-width: 46ch; }
+  .hero-photo { aspect-ratio: 4 / 3; }
+  .hero-inset { left: auto; right: 16px; bottom: -32px; width: 112px; border-width: 4px; }
 }
-.service-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--hairline-bright);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 30px rgba(163,230,53,0.06);
-}
-.service-icon {
-  width: 44px; height: 44px; margin-bottom: 1.75rem;
-}
-.service-icon svg { width: 100%; height: 100%; stroke: var(--accent); stroke-width: 1.5; fill: none; }
-.service-title {
-  font-family: var(--display-font); font-weight: 600;
-  font-size: 1.5rem; letter-spacing: -0.01em; margin-bottom: 0.75rem;
-}
-.service-desc {
-  font-size: 0.95rem; line-height: 1.65; color: var(--muted);
-  margin-bottom: 1.5rem; max-width: 32ch;
-}
-.service-link {
-  font-size: 0.85rem; font-weight: 500; color: var(--text);
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  transition: gap 0.2s var(--ease), color 0.2s var(--ease);
-}
-.service-link:hover { gap: 0.7rem; color: var(--accent); }
-.service-link .arrow { transition: transform 0.2s var(--ease); }
-.service-link:hover .arrow { transform: translateX(2px); }
-
-/* Before/After */
-.ba-section { background: var(--surface); }
-.ba-head { text-align: center; margin-bottom: 3rem; }
-.ba-head .eyebrow { display: inline-block; margin-bottom: 1rem; }
-.ba-head h2 {
-  font-family: var(--display-font); font-weight: 300;
-  font-size: clamp(1.75rem, 4vw, 2.75rem); letter-spacing: -0.02em;
+@media (max-width: 480px) {
+  .hero-ctas .btn { flex: 1 1 100%; }
 }
 
-.ba-slider {
-  position: relative; max-width: 960px; margin: 0 auto;
-  aspect-ratio: 16/10; border-radius: var(--radius);
-  overflow: hidden; cursor: ew-resize; user-select: none;
-  border: 1px solid var(--hairline);
-  touch-action: none;
-}
-.ba-layer {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-}
-.ba-before {
-  background:
-    linear-gradient(135deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    radial-gradient(ellipse at 30% 70%, #4A4538 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 40%, #5A5247 0%, transparent 50%),
-    linear-gradient(180deg, #6B6253 0%, #423C33 100%);
-}
-.ba-after {
-  background:
-    linear-gradient(135deg, rgba(0,0,0,0.15), rgba(0,0,0,0.3)),
-    radial-gradient(ellipse at 25% 65%, #1A3A12 0%, transparent 55%),
-    radial-gradient(ellipse at 65% 30%, #2E5A1E 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 75%, #0E2A0A 0%, transparent 45%),
-    linear-gradient(180deg, #1E3A15 0%, #0A1A08 100%);
-}
-.ba-after-wrap { position: absolute; inset: 0; width: 50%; overflow: hidden; }
-.ba-after-wrap .ba-layer { width: 960px; max-width: none; }
-.ba-handle {
-  position: absolute; top: 0; bottom: 0; width: 2px;
-  background: var(--accent); left: 50%; transform: translateX(-50%);
-  z-index: 3; box-shadow: 0 0 12px var(--accent-glow);
-}
-.ba-grip {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--accent); border: 3px solid var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 20px var(--accent-glow);
-  z-index: 4; pointer-events: none;
-}
-.ba-grip svg { width: 18px; height: 18px; stroke: var(--bg); stroke-width: 2; fill: none; }
-.ba-label {
-  position: absolute; bottom: 1rem; padding: 0.3rem 0.7rem;
-  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-  background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
-  border-radius: 4px; color: var(--text); z-index: 2;
-}
-.ba-label-before { left: 1rem; }
-.ba-label-after { right: 1rem; }
-
-.ba-caption {
-  text-align: center; margin-top: 1.5rem;
-  font-size: 0.85rem; color: var(--muted);
-}
-.ba-caption strong { color: var(--text); font-weight: 500; }
-
-/* Stats */
-.stats-section {
-  background: var(--bg);
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-}
-.stats-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 2rem; text-align: center;
-}
-@media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 1rem; } }
-.stat-num {
-  font-family: var(--display-font); font-weight: 300;
-  font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1;
-  color: var(--accent); letter-spacing: -0.03em;
-}
-.stat-label {
-  font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--muted); margin-top: 0.75rem;
+/* =========================================================
+   MARQUEE (the one marquee on the page)
+   ========================================================= */
+.marquee { border-block: 1px solid var(--line); overflow: hidden; padding-block: 22px; margin-top: clamp(64px, 7vw, 96px); }
+.marquee-track { display: flex; width: max-content; gap: 0; }
+.marquee-group { display: flex; align-items: center; gap: 44px; padding-right: 44px; font-family: var(--display); font-weight: 600; font-size: clamp(1.25rem, 2.2vw, 1.75rem); letter-spacing: -0.02em; color: var(--ink-2); white-space: nowrap; }
+.marquee-group .ph { color: var(--accent); font-size: 0.8em; }
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track { animation: marquee 42s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
 }
 
-/* Testimonial */
-.testimonial-section { position: relative; overflow: hidden; }
-.testimonial-wrap { position: relative; max-width: 800px; margin: 0 auto; text-align: center; }
-.testimonial-quote-mark {
-  font-family: var(--display-font); font-weight: 600;
-  font-size: clamp(12rem, 25vw, 20rem); line-height: 0.7;
-  color: var(--accent); opacity: 0.07;
-  position: absolute; top: -3rem; left: 50%; transform: translateX(-50%);
-  z-index: 0; pointer-events: none;
+/* =========================================================
+   SERVICES (bento, exactly six cells)
+   ========================================================= */
+.services-head { max-width: 760px; }
+.bento {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: minmax(240px, auto);
 }
-.testimonial-quote {
-  position: relative; z-index: 1;
-  font-family: var(--display-font); font-weight: 300;
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.3;
-  letter-spacing: -0.02em; color: var(--text);
-}
-.testimonial-attr {
-  position: relative; z-index: 1; margin-top: 2rem;
-  font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--muted);
-}
-.testimonial-attr .name { color: var(--text); }
+.cell { position: relative; border-radius: var(--r-lg); overflow: hidden; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; isolation: isolate; background: var(--card); border: 1px solid var(--line); }
+.cell h3 { font-size: clamp(1.35rem, 2vw, 1.7rem); }
+.cell p { margin-top: 8px; color: var(--muted); max-width: 40ch; font-size: 0.98rem; }
+.cell .price { margin-top: 16px; font-size: 0.9rem; font-weight: 600; color: var(--ink-2); }
+.cell-icon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; font-size: 26px; margin-bottom: auto; }
 
-/* Final CTA */
-.cta-section { background: var(--surface); }
-.cta-wrap { max-width: 640px; margin: 0 auto; text-align: center; }
-.cta-headline {
-  font-family: var(--display-font); font-weight: 300;
-  font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1.0;
-  letter-spacing: -0.03em; margin-bottom: 1.25rem;
-}
-.cta-sub {
-  font-size: 1.05rem; color: var(--muted); max-width: 45ch;
-  margin: 0 auto 3rem; line-height: 1.7;
-}
-.quote-form {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  text-align: left;
-}
-.quote-form .full { grid-column: 1 / -1; }
-.form-group label {
-  display: block; font-size: 0.72rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
-}
-.form-group input, .form-group textarea {
-  width: 100%; padding: 0.85rem 1rem;
-  background: var(--bg); border: 1px solid var(--hairline);
-  border-radius: var(--radius-sm); color: var(--text);
-  font-family: var(--body-font); font-size: 0.95rem;
-  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
-}
-.form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted-2); }
-.form-group input:focus, .form-group textarea:focus {
-  outline: none; border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-dim);
-}
-.form-group textarea { resize: vertical; min-height: 110px; }
-.quote-form .submit-wrap { grid-column: 1 / -1; margin-top: 0.5rem; }
-.quote-form .btn-primary { width: 100%; justify-content: center; padding: 1.05rem; }
-.form-success {
-  grid-column: 1 / -1; text-align: center;
-  padding: 1.5rem; border: 1px solid var(--accent);
-  border-radius: var(--radius-sm); background: var(--accent-dim);
-  color: var(--text); font-size: 0.95rem;
-}
-.form-success strong { color: var(--accent); }
-@media (max-width: 600px) { .quote-form { grid-template-columns: 1fr; } }
+.cell-photo { border: 0; color: #F4F2EC; min-height: 300px; }
+.cell-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s var(--ease); }
+.cell-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(12, 18, 14, 0) 30%, rgba(12, 18, 14, 0.82) 100%); }
+.cell-photo p { color: rgba(244, 242, 236, 0.86); }
+.cell-photo .price { color: #F4F2EC; }
+.cell-photo:hover img { transform: scale(1.04); }
 
-/* Footer */
-.footer {
-  border-top: 1px solid var(--hairline);
-  padding: 3.5rem 0 2.5rem;
+.cell-accent { background: var(--accent); border: 0; color: var(--accent-ink); }
+.cell-accent p, .cell-accent .price { color: color-mix(in oklab, var(--accent-ink) 82%, transparent); }
+.cell-accent .cell-icon { background: color-mix(in oklab, var(--accent-ink) 16%, transparent); }
+.cell-green { background: var(--evergreen); border: 0; color: var(--evergreen-ink); }
+.cell-green p, .cell-green .price { color: rgba(238, 241, 234, 0.78); }
+.cell-green .cell-icon { background: rgba(238, 241, 234, 0.1); color: #F0A070; }
+.cell-plain .cell-icon { background: var(--accent-soft); color: var(--accent-text); }
+
+.c-leaf   { grid-column: 1 / span 7; grid-row: span 2; min-height: 520px; }
+.c-gutter { grid-column: 8 / span 5; }
+.c-aerate { grid-column: 8 / span 5; }
+.c-plant  { grid-column: 1 / span 5; grid-row: span 2; min-height: 520px; }
+.c-prune  { grid-column: 6 / span 7; }
+.c-irrig  { grid-column: 6 / span 7; }
+
+@media (max-width: 960px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .c-leaf { grid-column: 1 / -1; grid-row: auto; min-height: 420px; }
+  .c-gutter, .c-aerate, .c-prune, .c-irrig { grid-column: span 1; }
+  .c-plant { grid-column: 1 / -1; grid-row: auto; min-height: 420px; }
 }
-.footer-grid {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem;
-}
-.footer-brand .wordmark { font-size: 1.5rem; margin-bottom: 1rem; }
-.footer-brand p { font-size: 0.85rem; color: var(--muted); max-width: 28ch; }
-.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-.footer-links a { font-size: 0.85rem; color: var(--muted); transition: color 0.2s var(--ease); }
-.footer-links a:hover { color: var(--text); }
-.footer-social { display: flex; gap: 1rem; }
-.footer-social a {
-  width: 36px; height: 36px; border: 1px solid var(--hairline);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-.footer-social a:hover { border-color: var(--accent); color: var(--accent); }
-.footer-social svg { width: 15px; height: 15px; fill: currentColor; }
-.footer-bottom {
-  border-top: 1px solid var(--hairline); padding-top: 1.5rem;
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-  font-size: 0.78rem; color: var(--muted-2);
+@media (max-width: 640px) {
+  .bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .bento > .cell { grid-column: 1 / -1; min-height: 240px; }
+  .c-leaf, .c-plant { min-height: 380px !important; }
 }
 
-/* ============ SCROLL REVEAL ============ */
-.reveal { opacity: 0; transform: translateY(60px); }
+/* =========================================================
+   HOLIDAY LIGHTING (full-bleed photo band)
+   ========================================================= */
+.holiday { position: relative; isolation: isolate; overflow: hidden; color: #F4F2EC; border-radius: var(--r-lg); min-height: 560px; display: flex; align-items: center; }
+.holiday-bg { position: absolute; inset: 0; z-index: -2; }
+.holiday-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; }
+.holiday::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 14, 11, 0.9) 0%, rgba(10, 14, 11, 0.72) 42%, rgba(10, 14, 11, 0.1) 80%); }
+.holiday-body { padding: clamp(32px, 6vw, 80px); max-width: 720px; }
+.holiday h2 { color: #F7F4EE; }
+.holiday p { color: rgba(244, 242, 236, 0.8); margin-top: 18px; font-size: 1.125rem; max-width: 46ch; }
+.holiday-list { list-style: none; margin-top: 28px; display: grid; gap: 12px; }
+.holiday-list li { display: flex; gap: 12px; align-items: flex-start; color: rgba(244, 242, 236, 0.92); }
+.holiday-list .ph { color: #F0A070; font-size: 20px; margin-top: 3px; }
+.holiday .btn { margin-top: 34px; }
+.holiday .btn-primary { background: #E5733A; color: #1A0F08; }
+.holiday .btn-primary:hover { background: #F08A55; }
+@media (max-width: 760px) {
+  .holiday { min-height: 0; align-items: flex-end; }
+  .holiday::before { background: linear-gradient(180deg, rgba(10, 14, 11, 0.35) 0%, rgba(10, 14, 11, 0.88) 55%, rgba(10, 14, 11, 0.95) 100%); }
+  .holiday-body { padding-top: 220px; }
+}
+
+/* =========================================================
+   PROCESS (sticky photo + scrolling steps)
+   ========================================================= */
+.process-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); margin-top: clamp(40px, 5vw, 64px); }
+.process-visual { position: sticky; top: 104px; height: calc(100dvh - 140px); max-height: 680px; border-radius: var(--r-lg); overflow: hidden; background: var(--surface-2); }
+.process-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity .8s var(--ease), transform 1.4s var(--ease); }
+.process-visual img.is-active { opacity: 1; transform: none; }
+.steps { list-style: none; }
+.step { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; padding-block: 32px; border-top: 1px solid var(--line); transition: opacity .5s var(--ease); }
+.step:first-child { border-top: 0; }
+.js .step { opacity: 0.38; }
+.js .step.is-active { opacity: 1; }
+.step-icon { width: 48px; height: 48px; border-radius: 999px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); font-size: 22px; margin-bottom: 22px; }
+.step h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+.step p { color: var(--muted); margin-top: 12px; max-width: 44ch; }
+.step-photo { display: none; }
+@media (max-width: 860px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .process-visual { display: none; }
+  .step { min-height: 0; padding-block: 36px; }
+  .js .step { opacity: 1; }
+  .step-photo { display: block; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 16 / 10; margin-bottom: 24px; background: var(--surface-2); }
+  .step-photo img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* =========================================================
+   SEASON CALENDAR (month columns)
+   ========================================================= */
+.season { background: var(--surface); }
+.months { margin-top: clamp(40px, 5vw, 60px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.month { padding: 28px 24px 8px 0; position: relative; }
+.month + .month { padding-left: 24px; border-left: 1px solid var(--line); }
+.month-name { font-family: var(--display); font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.now-badge { display: none; font-family: var(--body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em; background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 4px 10px; }
+.month.is-now .now-badge { display: inline-block; }
+.month.is-now::before { content: ""; position: absolute; top: -2px; left: 0; right: 0; height: 4px; background: var(--accent); }
+.month ul { list-style: none; margin-top: 18px; display: grid; gap: 10px; }
+.month li { display: flex; gap: 10px; color: var(--ink-2); font-size: 0.98rem; line-height: 1.45; }
+.month li .ph { color: var(--accent-text); margin-top: 3px; flex: none; }
+@media (max-width: 900px) {
+  .months { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .month:nth-child(3) { padding-left: 0; border-left: 0; }
+  .month:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 560px) {
+  .months { grid-template-columns: 1fr; }
+  .month, .month + .month { padding-left: 0; border-left: 0; padding-right: 0; }
+  .month + .month { border-top: 1px solid var(--line); }
+}
+
+/* =========================================================
+   PRICING (asymmetric trio)
+   ========================================================= */
+.plans { margin-top: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.plan { border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--card); padding: 32px; display: flex; flex-direction: column; }
+.plan-name { font-family: var(--display); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+.plan-desc { color: var(--muted); margin-top: 6px; font-size: 0.98rem; }
+.plan-price { margin-top: 28px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.plan-price strong { font-family: var(--display); font-size: clamp(2.4rem, 4vw, 3.2rem); letter-spacing: -0.04em; line-height: 1; }
+.plan-price span { color: var(--muted); font-size: 0.95rem; }
+.plan-price .from { width: 100%; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; margin-bottom: -4px; }
+.plan ul { list-style: none; margin-top: 28px; display: grid; gap: 12px; flex: 1; align-content: start; }
+.plan li { display: flex; gap: 10px; font-size: 0.98rem; color: var(--ink-2); }
+.plan li .ph { color: var(--accent-text); margin-top: 3px; flex: none; }
+.plan .btn { margin-top: 32px; width: 100%; }
+.plan-featured { background: var(--evergreen); color: var(--evergreen-ink); border: 0; padding: 40px 36px; box-shadow: var(--shadow); }
+.plan-featured .plan-desc, .plan-featured .plan-price span { color: rgba(238, 241, 234, 0.72); }
+.plan-featured li { color: rgba(238, 241, 234, 0.92); }
+.plan-featured li .ph { color: #F0A070; }
+.plan-tag { align-self: flex-start; margin-bottom: 18px; font-size: 0.8rem; font-weight: 600; border-radius: 999px; padding: 6px 12px; background: rgba(240, 160, 112, 0.16); color: #F5B48A; }
+.plan-featured .btn-primary { background: #E5733A; color: #1A0F08; }
+.plan-featured .btn-primary:hover { background: #F08A55; }
+.plans-note { margin-top: 24px; color: var(--muted); font-size: 0.95rem; display: flex; gap: 10px; align-items: center; }
+.plans-note .ph { color: var(--accent-text); font-size: 20px; }
+@media (max-width: 960px) {
+  .plans { grid-template-columns: 1fr; max-width: 560px; }
+  .plan-featured { order: -1; }
+}
+
+/* =========================================================
+   REVIEWS (summary + snap carousel)
+   ========================================================= */
+.reviews-grid > * { min-width: 0; }
+.reviews-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.score { font-family: var(--display); font-weight: 700; font-size: clamp(4.5rem, 9vw, 7.5rem); letter-spacing: -0.05em; line-height: 0.9; margin-top: 28px; }
+.score small { font-size: 0.32em; color: var(--muted); letter-spacing: -0.01em; font-weight: 600; }
+.stars { display: flex; gap: 4px; color: var(--accent); font-size: 22px; margin-top: 14px; }
+.score-note { color: var(--muted); margin-top: 10px; }
+.reviews-photo { margin-top: 32px; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 3 / 2; background: var(--surface-2); }
+.reviews-photo img { width: 100%; height: 100%; object-fit: cover; }
+.carousel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(300px, 46%); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; overscroll-behavior-x: contain; }
+.carousel::-webkit-scrollbar { display: none; }
+.quote { scroll-snap-align: start; border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line); padding: 32px; display: flex; flex-direction: column; min-height: 300px; }
+.quote .stars { font-size: 16px; margin-top: 0; }
+.quote blockquote { font-family: var(--display); font-weight: 500; font-size: clamp(1.2rem, 1.7vw, 1.4rem); line-height: 1.35; letter-spacing: -0.015em; margin-top: 20px; flex: 1; text-wrap: pretty; }
+.quote figcaption { margin-top: 28px; display: flex; align-items: center; gap: 12px; }
+.avatar { width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; font-weight: 600; font-size: 0.9rem; background: var(--accent-soft); color: var(--accent-text); flex: none; }
+.quote cite { font-style: normal; font-weight: 600; display: block; }
+.quote figcaption span { color: var(--muted); font-size: 0.9rem; }
+.carousel-controls { display: flex; gap: 10px; margin-top: 24px; }
+@media (max-width: 900px) {
+  .reviews-grid { grid-template-columns: minmax(0, 1fr); }
+  .reviews-photo { display: none; }
+  .carousel { grid-auto-columns: minmax(280px, 86%); }
+}
+
+/* =========================================================
+   FAQ + SERVICE AREA
+   ========================================================= */
+.faq-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr); gap: clamp(32px, 6vw, 96px); }
+.area { margin-top: 32px; padding: 28px; border-radius: var(--r-lg); background: var(--surface); }
+.area h3 { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; }
+.area h3 .ph { color: var(--accent-text); }
+.towns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.towns span { font-size: 0.9rem; padding: 7px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--ink-2); }
+.area p { color: var(--muted); font-size: 0.95rem; margin-top: 16px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq details:first-child { border-top: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 0; font-family: var(--display); font-weight: 600; font-size: clamp(1.1rem, 1.6vw, 1.3rem); letter-spacing: -0.015em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .ph { flex: none; width: 36px; height: 36px; border-radius: 999px; border: 1.5px solid var(--line-strong); display: grid; place-items: center; font-size: 16px; transition: transform .35s var(--ease), background-color .3s, color .3s, border-color .3s; }
+.faq details[open] summary .ph { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.faq details p { color: var(--muted); padding-bottom: 24px; max-width: 62ch; }
+@media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; } }
+
+/* =========================================================
+   QUOTE FORM
+   ========================================================= */
+.contact-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr); gap: 16px; align-items: stretch; }
+.contact-photo { position: relative; border-radius: var(--r-lg); overflow: hidden; min-height: 560px; background: var(--surface-2); isolation: isolate; color: #F4F2EC; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; }
+.contact-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.contact-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 14, 11, 0) 35%, rgba(10, 14, 11, 0.85) 100%); }
+.contact-lines { display: grid; gap: 14px; }
+.contact-lines a, .contact-lines div { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+.contact-lines .ph { width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; background: rgba(244, 242, 236, 0.14); font-size: 18px; flex: none; }
+.contact-lines a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.form-card { border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line); padding: clamp(24px, 4vw, 48px); }
+.form-card h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); }
+#form-wrap > p { color: var(--muted); margin-top: 14px; }
+.form { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+.field { display: grid; gap: 8px; align-content: start; }
+.field-full { grid-column: 1 / -1; }
+.field label, .field legend { font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+.field .opt { font-weight: 400; color: var(--muted); }
+.input {
+  width: 100%; height: 52px; padding-inline: 16px;
+  border-radius: var(--r-md); border: 1.5px solid var(--line-strong);
+  background: var(--bg); color: var(--ink);
+  transition: border-color .2s, box-shadow .2s;
+}
+textarea.input { height: auto; min-height: 120px; padding-block: 14px; resize: vertical; }
+select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%235A645C' stroke-width='1.6'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+.input::placeholder { color: var(--muted); opacity: 1; }
+.input:hover { border-color: var(--muted); }
+.input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.field.has-error .input { border-color: #C0392B; }
+.error-text { display: none; font-size: 0.85rem; color: #B42318; font-weight: 500; }
+:root[data-theme="dark"] .error-text { color: #FF8A7A; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .error-text { color: #FF8A7A; } }
+.field.has-error .error-text { display: block; }
+.helper { font-size: 0.85rem; color: var(--muted); }
+fieldset.field { border: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding-inline: 16px; border-radius: 999px; border: 1.5px solid var(--line-strong); font-size: 0.92rem; font-weight: 500; cursor: pointer; transition: background-color .2s, border-color .2s, color .2s; user-select: none; }
+.chip span .ph { display: none; }
+.chip input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.chip input:checked + span .ph { display: inline-block; }
+.chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.form-foot { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+.form-foot .helper { max-width: 36ch; }
+.btn[aria-busy="true"] { pointer-events: none; opacity: 0.75; }
+.form-alert { grid-column: 1 / -1; display: none; gap: 12px; align-items: flex-start; padding: 16px 18px; border-radius: var(--r-md); background: rgba(192, 57, 43, 0.08); color: var(--ink); border: 1px solid rgba(192, 57, 43, 0.3); font-size: 0.95rem; }
+.form-alert.is-shown { display: flex; }
+.form-alert .ph { color: #C0392B; font-size: 20px; flex: none; margin-top: 1px; }
+.form-success { display: none; text-align: left; padding-block: 24px; }
+.form-success.is-shown { display: block; }
+.form-success .ok { width: 64px; height: 64px; border-radius: 999px; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-size: 30px; }
+.form-success h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-top: 24px; }
+.form-success p { color: var(--muted); margin-top: 10px; max-width: 46ch; }
+@media (max-width: 960px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-photo { min-height: 380px; }
+}
+@media (max-width: 560px) { .form { grid-template-columns: 1fr; } }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer { padding-top: clamp(64px, 8vw, 104px); padding-bottom: 32px; }
+.footer-top { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 40px; padding-bottom: 56px; border-bottom: 1px solid var(--line); }
+.footer-brand p { color: var(--muted); margin-top: 16px; max-width: 34ch; font-size: 0.98rem; }
+.footer h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 16px; }
+.footer ul { list-style: none; display: grid; gap: 10px; color: var(--muted); font-size: 0.98rem; }
+.footer ul a:hover { color: var(--ink); }
+.socials { display: flex; gap: 8px; margin-top: 24px; }
+.footer-big { font-family: var(--display); font-weight: 800; font-size: clamp(3.4rem, 18.2vw, 17rem); letter-spacing: -0.055em; line-height: 0.82; color: var(--surface-2); margin-top: 48px; user-select: none; white-space: nowrap; overflow: hidden; }
+.footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.88rem; margin-top: 28px; }
+@media (max-width: 860px) { .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+
+/* Mobile sticky call bar */
+.callbar { display: none; }
+@media (max-width: 640px) {
+  .callbar { position: fixed; z-index: 40; left: 12px; right: 12px; bottom: 12px; display: grid; grid-template-columns: auto 1fr; gap: 8px; transition: transform .35s var(--ease), opacity .35s var(--ease); }
+  .callbar.is-hidden { transform: translateY(140%); opacity: 0; }
+  .callbar .icon-btn { width: 52px; height: 52px; background: var(--card); border-color: var(--line-strong); box-shadow: var(--shadow); }
+  .callbar .btn { box-shadow: var(--shadow); }
+  .footer { padding-bottom: 96px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .hero-eyebrow, .hero-sub, .hero-ctas { opacity: 1 !important; transform: none !important; }
-  .hero-headline .word-inner { transform: none !important; }
-  .scroll-line::after, .marquee-track, .grain-overlay { animation: none !important; }
-  .mobile-menu.open a { animation: none !important; opacity: 1 !important; transform: none !important; }
-  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="grain-overlay" aria-hidden="true"></div>
-
-<!-- ============ NAV ============ -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#top" class="wordmark" aria-label="Sage and Stone Landscaping home">Sage<span class="amp">&amp;</span>Stone</a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact" class="nav-pill">Get a Quote</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- Mobile overlay -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#services">Services</a>
-  <a href="#work">Work</a>
-  <a href="#reviews">Reviews</a>
-  <a href="#contact">Contact</a>
-  <a href="#contact" class="mobile-pill">Get a Quote</a>
-</div>
-
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-content">
-    <p class="hero-eyebrow eyebrow">
-      Full-service landscape design <span class="dot">·</span> <span class="lime">St. Mary's County, Maryland</span>
-    </p>
-    <h1 class="hero-headline" id="heroHeadline">
-      <span class="word-mask"><span class="word-inner">Ground,</span></span>
-      <span class="word-mask"><span class="word-inner"><em>elevated.</em></span></span>
-    </h1>
-    <p class="hero-sub" id="heroSub">
-      Considered residential landscapes for homeowners who notice the details. We design, build, and care for outdoor spaces that feel inevitable — as though they were always meant to be there.
-    </p>
-    <div class="hero-ctas" id="heroCtas">
-      <a href="#contact" class="btn-primary">Book a consultation <span class="arrow">→</span></a>
-      <a href="#work" class="btn-ghost">See our work</a>
+<!-- ================= NAV ================= -->
+<div id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:8px;width:1px"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Copperleaf Grounds Co. home">
+      <span class="brand-mark"><i class="ph ph-leaf" aria-hidden="true"></i></span>
+      Copperleaf <small>Grounds Co.</small>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#season">Fall schedule</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode">
+        <i class="ph ph-moon" aria-hidden="true"></i><i class="ph ph-sun" aria-hidden="true"></i>
+      </button>
+      <a href="#quote" class="btn btn-primary btn-sm">Get a free quote</a>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="ph ph-list" aria-hidden="true"></i>
+      </button>
     </div>
-  </div>
-  <div class="scroll-indicator" aria-hidden="true">
-    <div class="scroll-line"></div>
   </div>
 </header>
-
-<!-- ============ MARQUEE ============ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track" id="marqueeTrack">
-    <span class="marquee-item">Design</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Build</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Hardscapes</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Lighting</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Maintenance</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Design</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Build</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Hardscapes</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Lighting</span><span class="marquee-dot">●</span>
-    <span class="marquee-item">Maintenance</span><span class="marquee-dot">●</span>
-  </div>
+<div class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+  <a href="#services">Services</a>
+  <a href="#season">Fall schedule</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#faq">FAQ</a>
+  <a href="#quote" class="btn btn-primary">Get a free quote <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
 </div>
 
-<!-- ============ SERVICES ============ -->
-<section id="services">
-  <div class="container">
-    <div class="services-head reveal">
-      <div>
-        <div class="section-label"><span>What we do</span></div>
-        <h2 class="section-headline">Three disciplines, one standard.</h2>
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal"><i class="ph ph-calendar-check" aria-hidden="true"></i> Fall cleanup booking is open</span>
+      <h1 class="reveal" style="--i:1">Clear lawns before the <em>first frost.</em></h1>
+      <p class="lede reveal" style="--i:2">Leaf removal, gutters, plantings and winter prep for homes across the Brandywine Valley. One crew, start to finish.</p>
+      <div class="hero-ctas reveal" style="--i:3">
+        <a href="#quote" class="btn btn-primary">Get a free quote <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        <a href="#services" class="btn btn-ghost">See fall services</a>
       </div>
-      <p style="max-width:38ch;color:var(--muted);font-size:0.95rem;">Every project moves through the same quiet rigor — from first sketch to final sweep. No handoffs, no surprises.</p>
     </div>
-    <div class="services-grid">
-      <article class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 44 44"><path d="M6 38 L16 18 L22 28 L30 12 L38 38" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 38 L38 38" stroke-linecap="round"/><circle cx="16" cy="18" r="2"/><circle cx="30" cy="12" r="2"/></svg>
-        </div>
-        <h3 class="service-title">Design &amp; Build</h3>
-        <p class="service-desc">From site analysis and planting plans to full construction — one team accountable from concept to completion.</p>
-        <a href="#contact" class="service-link">Learn more <span class="arrow">→</span></a>
+    <div class="hero-media">
+      <div class="hero-photo">
+        <img src="images/hero.webp" srcset="images/hero-1100.webp 1100w, images/hero.webp 2000w" sizes="(min-width: 960px) 58vw, 100vw" width="2000" height="1326" alt="White craftsman house under maple trees in peak fall color, with leaves across the front lawn" fetchpriority="high">
+      </div>
+      <div class="hero-inset">
+        <img src="images/porch-mums-640.webp" width="640" height="802" alt="Front steps lined with potted mums and pumpkins beside a red door" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-label="Services we offer">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>Leaf removal</span><i class="ph ph-leaf" aria-hidden="true"></i>
+        <span>Gutter cleaning</span><i class="ph ph-leaf" aria-hidden="true"></i>
+        <span>Aeration &amp; overseeding</span><i class="ph ph-leaf" aria-hidden="true"></i>
+        <span>Mums &amp; bulb planting</span><i class="ph ph-leaf" aria-hidden="true"></i>
+        <span>Shrub pruning</span><i class="ph ph-leaf" aria-hidden="true"></i>
+        <span>Irrigation blowouts</span><i class="ph ph-leaf" aria-hidden="true"></i>
+        <span>Holiday lighting</span><i class="ph ph-leaf" aria-hidden="true"></i>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>Leaf removal</span><i class="ph ph-leaf"></i>
+        <span>Gutter cleaning</span><i class="ph ph-leaf"></i>
+        <span>Aeration &amp; overseeding</span><i class="ph ph-leaf"></i>
+        <span>Mums &amp; bulb planting</span><i class="ph ph-leaf"></i>
+        <span>Shrub pruning</span><i class="ph ph-leaf"></i>
+        <span>Irrigation blowouts</span><i class="ph ph-leaf"></i>
+        <span>Holiday lighting</span><i class="ph ph-leaf"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services" style="padding-top: clamp(48px, 6vw, 88px);">
+  <div class="wrap">
+    <div class="services-head">
+      <h2 class="reveal">Everything fall leaves behind.</h2>
+      <p class="lede reveal" style="--i:1">Book one service or bundle the whole season. Every visit ends with a walk-through and a clean driveway.</p>
+    </div>
+
+    <div class="bento">
+      <article class="cell cell-photo c-leaf reveal">
+        <img src="images/leaf-blower.webp" srcset="images/leaf-blower-640.webp 640w, images/leaf-blower.webp 1060w" sizes="(min-width: 960px) 56vw, 100vw" width="1060" height="795" alt="Crew member clearing leaves from a front yard with a leaf blower" loading="lazy">
+        <h3>Leaf removal &amp; haul-away</h3>
+        <p>Lawns, beds, patios and the spots behind the shrubs. We bag or vacuum it all and take it to compost.</p>
+        <div class="price">From $285 per visit</div>
       </article>
-      <article class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 44 44"><rect x="6" y="14" width="32" height="22" rx="1" stroke-linejoin="round"/><line x1="6" y1="22" x2="38" y2="22"/><line x1="14" y1="14" x2="14" y2="36"/><line x1="22" y1="14" x2="22" y2="36"/><line x1="30" y1="14" x2="30" y2="36"/><line x1="10" y1="10" x2="10" y2="14"/><line x1="34" y1="10" x2="34" y2="14"/></svg>
-        </div>
-        <h3 class="service-title">Hardscapes &amp; Patios</h3>
-        <p class="service-desc">Natural stone patios, fieldstone walls, and outdoor kitchens built with materials chosen to age gracefully.</p>
-        <a href="#contact" class="service-link">Learn more <span class="arrow">→</span></a>
+
+      <article class="cell cell-accent c-gutter reveal" style="--i:1">
+        <div class="cell-icon"><i class="ph ph-house-line" aria-hidden="true"></i></div>
+        <h3>Gutter cleaning</h3>
+        <p>Hand-cleared gutters, flushed downspouts and a photo of every run when we finish.</p>
+        <div class="price">From $165</div>
       </article>
-      <article class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 44 44"><path d="M22 38 L22 22" stroke-linecap="round"/><path d="M22 22 C22 16 18 12 14 12 C14 18 18 22 22 22 Z" stroke-linejoin="round"/><path d="M22 24 C22 19 25 15 30 15 C30 21 26 24 22 24 Z" stroke-linejoin="round"/><path d="M22 38 C22 38 22 34 26 32" stroke-linecap="round"/></svg>
-        </div>
-        <h3 class="service-title">Estate Maintenance</h3>
-        <p class="service-desc">Seasonal care for properties that demand consistency — pruning, soil health, lighting adjustments, and quiet stewardship.</p>
-        <a href="#contact" class="service-link">Learn more <span class="arrow">→</span></a>
+
+      <article class="cell cell-plain c-aerate reveal" style="--i:2">
+        <div class="cell-icon"><i class="ph ph-plant" aria-hidden="true"></i></div>
+        <h3>Aeration &amp; overseeding</h3>
+        <p>Core aeration plus a cool-season seed blend, so the lawn comes back thicker in spring.</p>
+        <div class="price">From $210</div>
+      </article>
+
+      <article class="cell cell-photo c-plant reveal">
+        <img src="images/porch-mums.webp" srcset="images/porch-mums-640.webp 640w, images/porch-mums.webp 1000w" sizes="(min-width: 960px) 40vw, 100vw" width="1000" height="1253" alt="Brick steps styled with rust and yellow mums, pumpkins and ornamental kale" loading="lazy">
+        <h3>Fall plantings &amp; porch styling</h3>
+        <p>Mums, ornamental kale, spring bulbs and pumpkins, arranged to suit your entry.</p>
+        <div class="price">From $240</div>
+      </article>
+
+      <article class="cell cell-photo c-prune reveal" style="--i:1">
+        <img src="images/pruning.webp" srcset="images/pruning-700.webp 700w, images/pruning.webp 1200w" sizes="(min-width: 960px) 56vw, 100vw" width="1200" height="800" alt="Gloved hands trimming a hedge with orange-handled shears" loading="lazy">
+        <h3>Pruning &amp; bed cleanup</h3>
+        <p>Shrubs shaped, perennials cut back and beds edged before the ground freezes.</p>
+        <div class="price">From $195</div>
+      </article>
+
+      <article class="cell cell-green c-irrig reveal" style="--i:2">
+        <div class="cell-icon"><i class="ph ph-snowflake" aria-hidden="true"></i></div>
+        <h3>Irrigation winterization</h3>
+        <p>Compressed-air blowout of every zone and backflow shutoff, so nothing cracks in January.</p>
+        <div class="price">From $95</div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ BEFORE / AFTER ============ -->
-<section id="work" class="ba-section">
-  <div class="container">
-    <div class="ba-head reveal">
-      <p class="eyebrow">Selected work <span class="dot">·</span> St. Mary's County</p>
-      <h2>The difference is in the details.</h2>
-    </div>
-  </div>
-  <div class="container">
-    <!-- PHOTO SLOT: before/after project photo -->
-    <div class="ba-slider reveal" id="baSlider">
-      <div class="ba-layer ba-before"></div>
-      <div class="ba-after-wrap" id="baAfterWrap">
-        <div class="ba-layer ba-after"></div>
+<!-- ================= HOLIDAY LIGHTING ================= -->
+<section aria-labelledby="holiday-title">
+  <div class="wrap">
+    <div class="holiday reveal">
+      <div class="holiday-bg">
+        <img src="images/holiday-lights.webp" srcset="images/holiday-lights-700.webp 700w, images/holiday-lights.webp 1100w" sizes="100vw" width="1100" height="1659" alt="House at night with warm white lights along the balcony and roofline" loading="lazy">
       </div>
-      <span class="ba-label ba-label-before">Before</span>
-      <span class="ba-label ba-label-after">After</span>
-      <div class="ba-handle" id="baHandle">
-        <div class="ba-grip">
-          <svg viewBox="0 0 24 24"><polyline points="9 6 4 12 9 18" stroke-linecap="round" stroke-linejoin="round"/><polyline points="15 6 20 12 15 18" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-      </div>
-    </div>
-    <p class="ba-caption reveal"><strong>Waterfront residence</strong> — Callaway, MD</p>
-  </div>
-</section>
-
-<!-- ============ STATS ============ -->
-<section class="stats-section">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat reveal">
-        <div class="stat-num" data-count="120" data-suffix="+">0</div>
-        <div class="stat-label">Projects delivered</div>
-      </div>
-      <div class="stat reveal">
-        <div class="stat-num" data-count="15" data-suffix="">0</div>
-        <div class="stat-label">Years in practice</div>
-      </div>
-      <div class="stat reveal">
-        <div class="stat-num" data-count="98" data-suffix="%">0</div>
-        <div class="stat-label">Client retention</div>
-      </div>
-      <div class="stat reveal">
-        <div class="stat-num" data-count="2" data-suffix="M+" data-prefix="$">0</div>
-        <div class="stat-label">Installed value</div>
+      <div class="holiday-body">
+        <h2 id="holiday-title">Lights up the week after the last leaf comes down.</h2>
+        <p>Our crew designs, installs and takes down your holiday lighting. No ladders for you, and no tangled boxes in the garage.</p>
+        <ul class="holiday-list">
+          <li><i class="ph ph-check-circle" aria-hidden="true"></i> Commercial-grade warm white LEDs, included with the install</li>
+          <li><i class="ph ph-check-circle" aria-hidden="true"></i> Timers set, bulbs replaced free all season</li>
+          <li><i class="ph ph-check-circle" aria-hidden="true"></i> January takedown and storage until next year</li>
+        </ul>
+        <a href="#quote" class="btn btn-primary">Get a free quote <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TESTIMONIAL ============ -->
-<section id="reviews" class="testimonial-section">
-  <div class="container">
-    <div class="testimonial-wrap reveal">
-      <div class="testimonial-quote-mark" aria-hidden="true">"</div>
-      <blockquote class="testimonial-quote">
-        They listened more than they pitched. Eighteen months later, the yard looks like it grew there — and the stonework still makes guests stop walking.
-      </blockquote>
-      <p class="testimonial-attr"><span class="name">Margaret &amp; David Hewett</span> — Breton Bay</p>
+<!-- ================= PROCESS ================= -->
+<section class="section" id="process">
+  <div class="wrap">
+    <span class="eyebrow reveal">How a cleanup day goes</span>
+    <h2 class="reveal" style="--i:1; margin-top: 14px; max-width: 14ch;">One visit, four steps, no mess left.</h2>
+
+    <div class="process-grid">
+      <div class="process-visual" aria-hidden="true">
+        <img src="images/leaves-grass.webp" alt="" class="is-active" data-step="0" loading="lazy">
+        <img src="images/rake.webp" alt="" data-step="1" loading="lazy">
+        <img src="images/leaf-pile.webp" alt="" data-step="2" loading="lazy">
+        <img src="images/lawn.webp" alt="" data-step="3" loading="lazy">
+      </div>
+      <ol class="steps">
+        <li class="step is-active" data-step="0">
+          <div class="step-photo"><img src="images/leaves-grass-700.webp" width="700" height="467" alt="Yellow maple leaves scattered across green grass" loading="lazy"></div>
+          <div class="step-icon"><i class="ph ph-clipboard-text" aria-hidden="true"></i></div>
+          <h3>Walk the property</h3>
+          <p>Your crew lead checks beds, drains, gutters and anything fragile, and confirms the plan with you by text before work starts.</p>
+        </li>
+        <li class="step" data-step="1">
+          <div class="step-photo"><img src="images/rake.webp" width="900" height="1352" alt="Red rake resting in a pile of orange fall leaves" loading="lazy"></div>
+          <div class="step-icon"><i class="ph ph-wind" aria-hidden="true"></i></div>
+          <h3>Clear every corner</h3>
+          <p>Blowers for the open lawn, rakes and hands for the beds. We get under decks, along fences and out of window wells.</p>
+        </li>
+        <li class="step" data-step="2">
+          <div class="step-photo"><img src="images/leaf-pile.webp" width="900" height="1200" alt="Large pile of dry brown and orange leaves" loading="lazy"></div>
+          <div class="step-icon"><i class="ph ph-recycle" aria-hidden="true"></i></div>
+          <h3>Haul it to compost</h3>
+          <p>Leaves leave in our truck, not in your trash. Everything goes to a local composting yard and comes back as mulch.</p>
+        </li>
+        <li class="step" data-step="3">
+          <div class="step-photo"><img src="images/lawn-900.webp" width="900" height="600" alt="Freshly mowed green lawn in front of a gray house with golden trees behind" loading="lazy"></div>
+          <div class="step-icon"><i class="ph ph-check-circle" aria-hidden="true"></i></div>
+          <h3>Leave it winter-ready</h3>
+          <p>A final mow, edges cleaned, hard surfaces blown off. You get before and after photos the same afternoon.</p>
+        </li>
+      </ol>
     </div>
   </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
-<section id="contact" class="cta-section">
-  <div class="container">
-    <div class="cta-wrap reveal">
-      <h2 class="cta-headline">Let's talk about your ground.</h2>
-      <p class="cta-sub">Tell us a little about the property and what you're imagining. We'll follow up within two business days.</p>
-      <form class="quote-form" id="quoteForm" novalidate>
-        <div class="form-group">
-          <label for="qf-name">Name</label>
-          <input type="text" id="qf-name" name="name" placeholder="Jane Doe" required>
-        </div>
-        <div class="form-group">
-          <label for="qf-phone">Phone</label>
-          <input type="tel" id="qf-phone" name="phone" placeholder="(301) 555-0100" required>
-        </div>
-        <div class="form-group full">
-          <label for="qf-email">Email</label>
-          <input type="email" id="qf-email" name="email" placeholder="jane@email.com" required>
-        </div>
-        <div class="form-group full">
-          <label for="qf-message">Project details</label>
-          <textarea id="qf-message" name="message" placeholder="A few sentences about the property and what you're hoping for…"></textarea>
-        </div>
-        <div class="submit-wrap">
-          <button type="submit" class="btn-primary">Request consultation <span class="arrow">→</span></button>
-        </div>
-      </form>
+<!-- ================= SEASON CALENDAR ================= -->
+<section class="section season" id="season">
+  <div class="wrap">
+    <h2 class="reveal" style="max-width: 18ch;">Your fall, already on the calendar.</h2>
+    <p class="lede reveal" style="--i:1">Season plan customers get every visit scheduled in September. You get a text the day before each one.</p>
+
+    <div class="months">
+      <div class="month reveal" data-month="8">
+        <div class="month-name">September <span class="now-badge">This month</span></div>
+        <ul>
+          <li><i class="ph ph-plant" aria-hidden="true"></i> Core aeration &amp; overseeding</li>
+          <li><i class="ph ph-plant" aria-hidden="true"></i> Early fall lawn feeding</li>
+          <li><i class="ph ph-plant" aria-hidden="true"></i> Perennial cutback begins</li>
+        </ul>
+      </div>
+      <div class="month reveal" style="--i:1" data-month="9">
+        <div class="month-name">October <span class="now-badge">This month</span></div>
+        <ul>
+          <li><i class="ph ph-leaf" aria-hidden="true"></i> First leaf removal visit</li>
+          <li><i class="ph ph-leaf" aria-hidden="true"></i> Tulip &amp; daffodil bulbs planted</li>
+          <li><i class="ph ph-leaf" aria-hidden="true"></i> Mums, kale &amp; porch styling</li>
+          <li><i class="ph ph-leaf" aria-hidden="true"></i> Shrub pruning</li>
+        </ul>
+      </div>
+      <div class="month reveal" style="--i:2" data-month="10">
+        <div class="month-name">November <span class="now-badge">This month</span></div>
+        <ul>
+          <li><i class="ph ph-wind" aria-hidden="true"></i> Peak and final leaf visits</li>
+          <li><i class="ph ph-wind" aria-hidden="true"></i> Gutter cleaning</li>
+          <li><i class="ph ph-wind" aria-hidden="true"></i> Irrigation blowout</li>
+          <li><i class="ph ph-wind" aria-hidden="true"></i> Holiday lights installed</li>
+        </ul>
+      </div>
+      <div class="month reveal" style="--i:3" data-month="11">
+        <div class="month-name">December <span class="now-badge">This month</span></div>
+        <ul>
+          <li><i class="ph ph-snowflake" aria-hidden="true"></i> Lights on, bulbs serviced</li>
+          <li><i class="ph ph-snowflake" aria-hidden="true"></i> Late-drop leaf pickup on request</li>
+          <li><i class="ph ph-snowflake" aria-hidden="true"></i> Driveway snow stakes placed</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+<!-- ================= PRICING ================= -->
+<!-- Sample pricing for a quarter-acre lot. Replace with your own rates. -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <h2 class="reveal" style="max-width: 16ch;">Three ways to book the season.</h2>
+    <p class="lede reveal" style="--i:1">Flat, written quotes before any work starts. No surprise dump fees.</p>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <div class="plan-name">One-time cleanup</div>
+        <p class="plan-desc">A single deep clean when the trees are bare.</p>
+        <div class="plan-price"><span class="from">From</span><strong>$285</strong><span>per visit</span></div>
+        <ul>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Full lawn and bed leaf removal</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Haul-away and composting</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Patios, walks and drive blown off</li>
+        </ul>
+        <a href="#quote" class="btn btn-ghost">Get a free quote</a>
+      </article>
+
+      <article class="plan plan-featured reveal" style="--i:1">
+        <span class="plan-tag">Most booked</span>
+        <div class="plan-name">Fall Season Plan</div>
+        <p class="plan-desc">Everything your yard needs from September to December.</p>
+        <div class="plan-price"><span class="from">From</span><strong>$940</strong><span>per season</span></div>
+        <ul>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Three scheduled leaf removal visits</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Gutter cleaning and downspout flush</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Aeration and overseeding</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Irrigation blowout</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Final mow and bed cleanup</li>
+        </ul>
+        <a href="#quote" class="btn btn-primary">Get a free quote <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="plan reveal" style="--i:2">
+        <div class="plan-name">Year-round care</div>
+        <p class="plan-desc">One crew for mowing, mulch and every season in between.</p>
+        <div class="plan-price"><span class="from">From</span><strong>$189</strong><span>per month</span></div>
+        <ul>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Fall Season Plan included</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Weekly mowing April to October</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> Spring cleanup and fresh mulch</li>
+          <li><i class="ph ph-check" aria-hidden="true"></i> 15% off holiday lighting</li>
+        </ul>
+        <a href="#quote" class="btn btn-ghost">Get a free quote</a>
+      </article>
+    </div>
+    <p class="plans-note reveal"><i class="ph ph-shield-check" aria-hidden="true"></i> Licensed and insured. Prices shown are typical for a quarter-acre lot.</p>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="section" id="reviews" style="padding-top: 0;">
+  <div class="wrap reviews-grid">
+    <div>
+      <span class="eyebrow reveal">Reviews</span>
+      <div class="score reveal" style="--i:1">4.9<small>/5</small></div>
+      <div class="stars reveal" style="--i:2" aria-label="Rated 4.9 out of 5">
+        <i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i>
+      </div>
+      <p class="score-note reveal" style="--i:2">From 312 Google reviews since 2014.</p>
+      <div class="reviews-photo reveal" style="--i:3">
+        <img src="images/pumpkin-steps.webp" width="1200" height="799" alt="Stone staircase lined with orange and white pumpkins" loading="lazy">
+      </div>
+    </div>
+
+    <div>
+      <div class="carousel" id="carousel" tabindex="0" aria-label="Customer reviews">
+        <figure class="quote">
+          <div class="stars" aria-hidden="true"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <blockquote>&ldquo;We have six oaks and a creek bed. They cleared all of it in one afternoon and sent photos before I got home.&rdquo;</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">PR</span><div><cite>Priya Raman</cite><span>Homeowner, Kennett Square</span></div></figcaption>
+        </figure>
+        <figure class="quote">
+          <div class="stars" aria-hidden="true"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <blockquote>&ldquo;Third year on the season plan. I never have to call. They just show up, text me, and the yard is done.&rdquo;</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">TB</span><div><cite>Tom &amp; Elise Brandt</cite><span>Season plan, West Chester</span></div></figcaption>
+        </figure>
+        <figure class="quote">
+          <div class="stars" aria-hidden="true"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <blockquote>&ldquo;The mums and kale on our steps got more compliments than anything we have done to the house.&rdquo;</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">MO</span><div><cite>Marcus Odom</cite><span>Porch styling, Chadds Ford</span></div></figcaption>
+        </figure>
+        <figure class="quote">
+          <div class="stars" aria-hidden="true"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <blockquote>&ldquo;They put our lights up the week after the last leaf pickup. Took them down in January without me asking.&rdquo;</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">LK</span><div><cite>Linda Kowalczyk</cite><span>Holiday lighting, Media</span></div></figcaption>
+        </figure>
+      </div>
+      <div class="carousel-controls">
+        <button class="icon-btn" type="button" data-dir="-1" aria-label="Previous review"><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+        <button class="icon-btn" type="button" data-dir="1" aria-label="Next review"><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ + AREA ================= -->
+<section class="section" id="faq" style="padding-top: 0;">
+  <div class="wrap faq-grid">
+    <div>
+      <h2 class="reveal">Questions we hear every October.</h2>
+      <div class="area reveal" style="--i:1">
+        <h3><i class="ph ph-map-pin" aria-hidden="true"></i> Where we work</h3>
+        <div class="towns">
+          <span>West Chester</span><span>Kennett Square</span><span>Chadds Ford</span><span>Media</span>
+          <span>Malvern</span><span>Glen Mills</span><span>Unionville</span><span>Downingtown</span>
+        </div>
+        <p>Just outside the list? Ask anyway. We cover most addresses within 20 miles of West Chester.</p>
+      </div>
+    </div>
+
+    <div class="faq reveal" style="--i:1">
+      <details open>
+        <summary>When should I book my fall cleanup?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+        <p>Most trees here drop between late October and the third week of November. Book by mid-October to lock in a date. Season plan visits are scheduled for you.</p>
+      </details>
+      <details>
+        <summary>Do you take the leaves away?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+        <p>Yes. Every leaf leaves in our truck and goes to a local composting yard. Haul-away is included in every quote.</p>
+      </details>
+      <details>
+        <summary>What if more leaves fall after my visit?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+        <p>The season plan includes three visits timed to the drop. One-time customers can add a follow-up visit at 20% off within 30 days.</p>
+      </details>
+      <details>
+        <summary>Can you mulch the leaves into the lawn instead?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+        <p>For light cover, yes. Shredded leaves feed the soil. Heavy cover smothers grass, so we remove it and mulch only what the lawn can take.</p>
+      </details>
+      <details>
+        <summary>Do I need to be home?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+        <p>No. Leave the gate unlocked and we will text you when we arrive, when we finish, and send photos of the result.</p>
+      </details>
+      <details>
+        <summary>Are you licensed and insured?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+        <p>Yes. We carry full liability and workers' comp coverage, and we are happy to send certificates to you or your HOA.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTE FORM ================= -->
+<section class="section" id="quote" style="padding-top: 0;">
+  <div class="wrap contact-grid">
+    <div class="contact-photo reveal">
+      <img src="images/dusk-entry.webp" srcset="images/dusk-entry-700.webp 700w, images/dusk-entry.webp 1100w" sizes="(min-width: 960px) 40vw, 100vw" width="1100" height="1650" alt="Front entry glowing at dusk under a red maple" loading="lazy">
+      <div class="contact-lines">
+        <a href="tel:+16105550147"><i class="ph ph-phone" aria-hidden="true"></i> (610) 555-0147</a>
+        <a href="mailto:hello@copperleafgrounds.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i> hello@copperleafgrounds.com</a>
+        <div><i class="ph ph-clock" aria-hidden="true"></i> Mon to Sat, 7am to 6pm</div>
+      </div>
+    </div>
+
+    <div class="form-card reveal" style="--i:1">
+      <div id="form-wrap">
+        <h2>Get a free fall quote.</h2>
+        <p>Tell us about your yard. We reply with a written quote within one business day.</p>
+
+        <!--
+          To receive submissions, set data-endpoint to a form service URL
+          (for example a Formspree endpoint like https://formspree.io/f/xxxxxx).
+          With no endpoint the form runs in demo mode and only shows the success state.
+        -->
+        <form class="form" id="quote-form" novalidate data-endpoint="">
+          <div class="field">
+            <label for="f-name">Full name</label>
+            <input class="input" id="f-name" name="name" type="text" autocomplete="name" required placeholder="Jordan Ellis">
+            <span class="error-text" id="f-name-err">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone</label>
+            <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(610) 555-0123">
+            <span class="error-text" id="f-phone-err">Please enter a phone number we can text.</span>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input class="input" id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+            <span class="error-text" id="f-email-err">Please enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="f-address">Street address or ZIP</label>
+            <input class="input" id="f-address" name="address" type="text" autocomplete="street-address" required placeholder="19382">
+            <span class="error-text" id="f-address-err">We need an address or ZIP to quote.</span>
+          </div>
+
+          <fieldset class="field field-full" id="f-services">
+            <legend>What do you need?</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="services" value="Leaf removal"><span><i class="ph ph-check" aria-hidden="true"></i>Leaf removal</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Gutter cleaning"><span><i class="ph ph-check" aria-hidden="true"></i>Gutter cleaning</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Aeration & overseeding"><span><i class="ph ph-check" aria-hidden="true"></i>Aeration &amp; overseeding</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Fall plantings"><span><i class="ph ph-check" aria-hidden="true"></i>Fall plantings</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Pruning & beds"><span><i class="ph ph-check" aria-hidden="true"></i>Pruning &amp; beds</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Irrigation blowout"><span><i class="ph ph-check" aria-hidden="true"></i>Irrigation blowout</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Holiday lighting"><span><i class="ph ph-check" aria-hidden="true"></i>Holiday lighting</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Fall Season Plan"><span><i class="ph ph-check" aria-hidden="true"></i>Fall Season Plan</span></label>
+            </div>
+            <span class="error-text" id="f-services-err">Pick at least one service.</span>
+          </fieldset>
+
+          <div class="field">
+            <label for="f-timing">When do you need us?</label>
+            <select class="input" id="f-timing" name="timing">
+              <option>As soon as possible</option>
+              <option>Late October</option>
+              <option>November</option>
+              <option>Before the holidays</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-size">Lot size <span class="opt">(optional)</span></label>
+            <select class="input" id="f-size" name="lot_size">
+              <option>Under 1/4 acre</option>
+              <option selected>1/4 to 1/2 acre</option>
+              <option>1/2 to 1 acre</option>
+              <option>Over 1 acre</option>
+            </select>
+          </div>
+          <div class="field field-full">
+            <label for="f-notes">Anything we should know? <span class="opt">(optional)</span></label>
+            <textarea class="input" id="f-notes" name="notes" placeholder="Gate code, dog in the yard, the big oak out back..."></textarea>
+          </div>
+
+          <div class="form-alert" id="form-alert" role="alert">
+            <i class="ph ph-warning-circle" aria-hidden="true"></i>
+            <span>Something went wrong sending your request. Please try again, or call us at (610) 555-0147.</span>
+          </div>
+
+          <div class="form-foot">
+            <span class="helper">No spam. We only use your info to send your quote.</span>
+            <button type="submit" class="btn btn-primary" id="submit-btn">
+              <span class="btn-label">Get a free quote</span> <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-success" id="form-success" tabindex="-1">
+        <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
+        <h3>Thanks, your request is in.</h3>
+        <p>We will text you within one business day to confirm a time for your walk-through and written quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
+  <div class="wrap">
+    <div class="footer-top">
       <div class="footer-brand">
-        <div class="wordmark">Sage<span class="amp">&amp;</span>Stone</div>
-        <p><!-- PLACEHOLDER: phone --> (301) 555-0100<br>
-        <!-- PLACEHOLDER: address --> 41890 Three Notch Rd · Leonardtown, MD 20650</p>
+        <a href="#top" class="brand"><span class="brand-mark"><i class="ph ph-leaf" aria-hidden="true"></i></span> Copperleaf <small>Grounds Co.</small></a>
+        <p>Seasonal yard care for the Brandywine Valley. Family run since 2014.</p>
+        <div class="socials">
+          <a class="icon-btn" href="#" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+          <a class="icon-btn" href="#" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+          <a class="icon-btn" href="#" aria-label="Google reviews"><i class="ph ph-google-logo" aria-hidden="true"></i></a>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Leaf removal</a></li>
+          <li><a href="#services">Gutter cleaning</a></li>
+          <li><a href="#services">Aeration &amp; overseeding</a></li>
+          <li><a href="#services">Fall plantings</a></li>
+          <li><a href="#holiday-title">Holiday lighting</a></li>
+        </ul>
       </div>
-      <div class="footer-social">
-        <!-- PLACEHOLDER: social links -->
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96zm0 1.8a3.18 3.18 0 1 0 0 6.36 3.18 3.18 0 0 0 0-6.36zm5.18-3.3a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32z"/></svg></a>
-        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
-        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.65 19.31c-.05-.78-.1-1.98.02-2.83.11-.77.73-4.9.73-4.9s-.19-.37-.19-.92c0-.86.5-1.51 1.13-1.51.53 0 .79.4.79.88 0 .53-.34 1.33-.51 2.07-.15.62.31 1.12.92 1.12 1.1 0 1.95-1.17 1.95-2.85 0-1.49-1.07-2.53-2.6-2.53-1.77 0-2.81 1.33-2.81 2.71 0 .54.21.88.47 1.15.05.06.06.11.04.18l-.18.7c-.03.11-.1.14-.22.08-.83-.39-1.35-1.6-1.35-2.58 0-2.1 1.53-4.03 4.4-4.03 2.31 0 4.1 1.65 4.1 3.85 0 2.3-1.45 4.14-3.46 4.14-.68 0-1.31-.35-1.53-.77l-.42 1.58c-.15.58-.55 1.3-.82 1.74A10 10 0 1 0 12 2z"/></svg></a>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#process">How it works</a></li>
+          <li><a href="#season">Fall schedule</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+16105550147">(610) 555-0147</a></li>
+          <li><a href="mailto:hello@copperleafgrounds.com">hello@copperleafgrounds.com</a></li>
+          <li>118 Birch Hollow Rd<br>West Chester, PA 19382</li>
+        </ul>
       </div>
     </div>
+    <div class="footer-big" aria-hidden="true">Copperleaf</div>
     <div class="footer-bottom">
-      <span>© 2026 Sage &amp; Stone Landscaping</span>
-      <span>St. Mary's County, Maryland</span>
+      <span>&copy; <span id="year">2026</span> Copperleaf Grounds Co. All rights reserved.</span>
+      <span>Photos via Pexels</span>
     </div>
   </div>
 </footer>
 
-<!-- ============ SCRIPTS ============ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<!-- Mobile call bar -->
+<div class="callbar is-hidden" id="callbar">
+  <a class="icon-btn" href="tel:+16105550147" aria-label="Call (610) 555-0147"><i class="ph ph-phone" aria-hidden="true"></i></a>
+  <a class="btn btn-primary" href="#quote">Get a free quote</a>
+</div>
 
 <script>
-(function() {
-  'use strict';
+(function () {
+  var root = document.documentElement;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ===== Lenis + ScrollTrigger ===== */
-  let lenis = null;
-  if (!reduced && window.Lenis) {
-    lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
-  }
-
-  if (window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
-    if (lenis) {
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((time) => lenis.raf(time * 1000));
-      gsap.ticker.lagSmoothing(0);
-    }
-  }
-
-  /* ===== Smooth anchor scroll via Lenis ===== */
-  function scrollTo(target) {
-    const el = document.querySelector(target);
-    if (!el) return;
-    if (lenis) lenis.scrollTo(el, { offset: -10 });
-    else el.scrollIntoView({ behavior: 'smooth' });
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if (href && href.length > 1) {
-        e.preventDefault();
-        scrollTo(href);
-        closeMobileMenu();
-      }
-    });
+  /* Theme toggle: system preference by default, manual choice remembered */
+  var toggle = document.querySelector('.theme-toggle');
+  toggle.addEventListener('click', function () {
+    var current = root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('cl-theme', next); } catch (e) {}
   });
 
-  /* ===== Nav scroll state ===== */
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  }, { passive: true });
+  /* Sticky nav background once the page leaves the top */
+  var nav = document.getElementById('nav');
+  new IntersectionObserver(function (entries) {
+    nav.classList.toggle('is-stuck', !entries[0].isIntersecting);
+  }).observe(document.getElementById('top-sentinel'));
 
-  /* ===== Mobile menu ===== */
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  let menuOpen = false;
-  function openMobileMenu() {
-    menuOpen = true;
-    navToggle.classList.add('open');
-    mobileMenu.classList.add('open');
-    navToggle.setAttribute('aria-expanded', 'true');
-    if (lenis) lenis.stop();
-    document.body.style.overflow = 'hidden';
+  /* Mobile menu */
+  var menuBtn = document.querySelector('.menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  function setMenu(open) {
+    menu.classList.toggle('is-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menuBtn.querySelector('i').className = open ? 'ph ph-x' : 'ph ph-list';
+    if (typeof updateCallbar === 'function') updateCallbar();
   }
-  function closeMobileMenu() {
-    if (!menuOpen) return;
-    menuOpen = false;
-    navToggle.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    if (lenis) lenis.start();
-    document.body.style.overflow = '';
-  }
-  navToggle.addEventListener('click', () => menuOpen ? closeMobileMenu() : openMobileMenu());
+  menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('is-open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
-  /* ===== Hero canvas gradient mesh ===== */
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let blobs = [];
-  let animId = null;
-  let canvasVisible = true;
-
-  function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const w = canvas.offsetWidth;
-    const h = canvas.offsetHeight;
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function initBlobs() {
-    const w = canvas.offsetWidth;
-    const h = canvas.offsetHeight;
-    const isSmall = w < 700;
-    const count = isSmall ? 3 : 4;
-    const colors = ['#0E1C0F', '#12240F', '#1A2E14', '#A3E635'];
-    blobs = [];
-    for (let i = 0; i < count; i++) {
-      blobs.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: (isSmall ? 0.3 : 0.45) + Math.random() * 0.25,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.12,
-        color: colors[i % colors.length],
-        phase: Math.random() * Math.PI * 2,
-        speed: 0.0003 + Math.random() * 0.0004,
-        lime: i === 3,
-      });
-    }
-  }
-
-  function drawBlobs(t) {
-    const w = canvas.offsetWidth;
-    const h = canvas.offsetHeight;
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#0A0F0A';
-    ctx.fillRect(0, 0, w, h);
-
-    blobs.forEach(b => {
-      const cx = b.x + Math.sin(t * b.speed + b.phase) * w * 0.15;
-      const cy = b.y + Math.cos(t * b.speed * 0.7 + b.phase) * h * 0.12;
-      const radius = Math.max(10, b.r * Math.min(w, h));
-
-      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
-      if (b.lime) {
-        grad.addColorStop(0, 'rgba(163, 230, 53, 0.08)');
-        grad.addColorStop(1, 'rgba(163, 230, 53, 0)');
-      } else {
-        const hex = b.color;
-        const r = parseInt(hex.slice(1,3), 16);
-        const g = parseInt(hex.slice(3,5), 16);
-        const bl = parseInt(hex.slice(5,7), 16);
-        grad.addColorStop(0, `rgba(${r},${g},${bl},0.55)`);
-        grad.addColorStop(1, `rgba(${r},${g},${bl},0)`);
-      }
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-      ctx.fill();
-    });
-  }
-
-  function animateCanvas(t) {
-    if (canvasVisible) drawBlobs(t);
-    animId = requestAnimationFrame(animateCanvas);
-  }
-
-  if (!reduced) {
-    resizeCanvas();
-    initBlobs();
-    animateCanvas(0);
-    window.addEventListener('resize', () => { resizeCanvas(); initBlobs(); });
-    document.addEventListener('visibilitychange', () => {
-      canvasVisible = !document.hidden;
-    });
+  /* Scroll reveal */
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
   } else {
-    // Static gradient fallback
-    canvas.style.background = 'radial-gradient(ellipse at 30% 40%, #12240F 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, #1A2E14 0%, transparent 50%), #0A0F0A';
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    reveals.forEach(function (el) { io.observe(el); });
   }
 
-  /* ===== Hero load animations ===== */
-  if (!reduced && window.gsap) {
-    const tl = gsap.timeline({ delay: 0.3 });
-    tl.to('.hero-headline .word-inner', {
-      y: '0%', duration: 1.1, ease: 'power4.out', stagger: 0.08,
-    })
-    .to('.hero-eyebrow', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.9')
-    .to('#heroSub', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.7')
-    .to('#heroCtas', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.6');
-  }
-
-  /* ===== Scroll reveals ===== */
-  if (!reduced && window.gsap && window.ScrollTrigger) {
-    gsap.utils.toArray('.reveal').forEach(el => {
-      gsap.fromTo(el,
-        { y: 60, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-          start: 'top 80%', once: true,
-        }
-      );
+  /* Process: swap the sticky photo to match the step in view */
+  var steps = document.querySelectorAll('.step');
+  var visuals = document.querySelectorAll('.process-visual img');
+  var stepIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var idx = entry.target.getAttribute('data-step');
+      steps.forEach(function (s) { s.classList.toggle('is-active', s === entry.target); });
+      visuals.forEach(function (v) { v.classList.toggle('is-active', v.getAttribute('data-step') === idx); });
     });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach(function (s) { stepIO.observe(s); });
 
-    // Stagger service cards
-    gsap.fromTo('.service-card',
-      { y: 60, opacity: 0 },
-      {
-        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-        stagger: 0.12, start: 'top 80%', once: true,
-        scrollTrigger: { trigger: '.services-grid', start: 'top 80%' },
-      }
-    );
+  /* Season calendar: mark the current month */
+  var m = String(new Date().getMonth());
+  var monthEl = document.querySelector('.month[data-month="' + m + '"]');
+  if (monthEl) monthEl.classList.add('is-now');
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Reviews carousel buttons */
+  var carousel = document.getElementById('carousel');
+  document.querySelectorAll('.carousel-controls [data-dir]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = carousel.querySelector('.quote');
+      var step = card ? card.getBoundingClientRect().width + 16 : 320;
+      carousel.scrollBy({ left: step * Number(btn.getAttribute('data-dir')), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* Mobile call bar: shown only after the hero, hidden over the quote form and while the menu is open */
+  var callbar = document.getElementById('callbar');
+  var barState = { hero: true, quote: false };
+  function updateCallbar() {
+    callbar.classList.toggle('is-hidden', barState.hero || barState.quote || menu.classList.contains('is-open'));
   }
+  new IntersectionObserver(function (entries) {
+    barState.hero = entries[0].isIntersecting; updateCallbar();
+  }).observe(document.querySelector('.hero-ctas'));
+  new IntersectionObserver(function (entries) {
+    barState.quote = entries[0].isIntersecting; updateCallbar();
+  }, { threshold: 0.15 }).observe(document.getElementById('quote'));
 
-  /* ===== Count-up stats ===== */
-  function animateCount(el) {
-    const target = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    const prefix = el.dataset.prefix || '';
-    const dur = 1800;
-    const start = performance.now();
-    function tick(now) {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 4);
-      const val = Math.round(target * eased);
-      el.textContent = prefix + val + suffix;
-      if (p < 1) requestAnimationFrame(tick);
+  /* Quote form: inline validation, loading, error and success states */
+  var form = document.getElementById('quote-form');
+  var submitBtn = document.getElementById('submit-btn');
+  var alertBox = document.getElementById('form-alert');
+  var checks = {
+    'f-name': function (v) { return v.trim().length > 1; },
+    'f-phone': function (v) { return v.replace(/\D/g, '').length >= 10; },
+    'f-email': function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
+    'f-address': function (v) { return v.trim().length >= 5; }
+  };
+  function setError(id, bad) {
+    var input = document.getElementById(id);
+    var field = input.closest('.field');
+    field.classList.toggle('has-error', bad);
+    if (input.tagName !== 'FIELDSET') {
+      input.setAttribute('aria-invalid', String(bad));
+      if (bad) input.setAttribute('aria-describedby', id + '-err'); else input.removeAttribute('aria-describedby');
     }
-    requestAnimationFrame(tick);
   }
-
-  const statNums = document.querySelectorAll('.stat-num');
-  if (reduced) {
-    statNums.forEach(el => {
-      el.textContent = (el.dataset.prefix || '') + el.dataset.count + (el.dataset.suffix || '');
-    });
-  } else if (window.gsap && window.ScrollTrigger) {
-    statNums.forEach(el => {
-      ScrollTrigger.create({
-        trigger: el, start: 'top 85%', once: true,
-        onEnter: () => animateCount(el),
-      });
-    });
-  } else {
-    // Fallback: IntersectionObserver
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { animateCount(e.target); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.5 });
-    statNums.forEach(el => io.observe(el));
+  function validateField(id) {
+    var bad = !checks[id](document.getElementById(id).value);
+    setError(id, bad);
+    return !bad;
   }
-
-  /* ===== Before/After slider ===== */
-  const slider = document.getElementById('baSlider');
-  const afterWrap = document.getElementById('baAfterWrap');
-  const handle = document.getElementById('baHandle');
-  let dragging = false;
-
-  function setSliderPos(pct) {
-    pct = Math.max(0, Math.min(100, pct));
-    afterWrap.style.width = pct + '%';
-    handle.style.left = pct + '%';
+  function validateServices() {
+    var ok = form.querySelectorAll('input[name="services"]:checked').length > 0;
+    document.getElementById('f-services').classList.toggle('has-error', !ok);
+    return ok;
   }
-
-  function getPctFromEvent(e) {
-    const rect = slider.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    return ((clientX - rect.left) / rect.width) * 100;
-  }
-
-  function onDragStart(e) {
-    dragging = true;
-    slider.style.cursor = 'grabbing';
-    setSliderPos(getPctFromEvent(e));
-    e.preventDefault();
-  }
-  function onDragMove(e) {
-    if (!dragging) return;
-    setSliderPos(getPctFromEvent(e));
-  }
-  function onDragEnd() {
-    dragging = false;
-    slider.style.cursor = 'ew-resize';
-  }
-
-  slider.addEventListener('mousedown', onDragStart);
-  window.addEventListener('mousemove', onDragMove);
-  window.addEventListener('mouseup', onDragEnd);
-  slider.addEventListener('touchstart', onDragStart, { passive: false });
-  window.addEventListener('touchmove', onDragMove, { passive: false });
-  window.addEventListener('touchend', onDragEnd);
-
-  // Click-to-position
-  slider.addEventListener('click', (e) => {
-    if (dragging) return;
-    setSliderPos(getPctFromEvent(e));
+  Object.keys(checks).forEach(function (id) {
+    var input = document.getElementById(id);
+    input.addEventListener('blur', function () { if (input.value) validateField(id); });
+    input.addEventListener('input', function () { if (input.closest('.field').classList.contains('has-error')) validateField(id); });
+  });
+  form.querySelectorAll('input[name="services"]').forEach(function (cb) {
+    cb.addEventListener('change', function () { if (document.getElementById('f-services').classList.contains('has-error')) validateServices(); });
   });
 
-  // Initialize at 50%
-  setSliderPos(50);
+  function showSuccess() {
+    document.getElementById('form-wrap').hidden = true;
+    var s = document.getElementById('form-success');
+    s.classList.add('is-shown');
+    s.focus();
+  }
 
-  /* ===== Quote form ===== */
-  const form = document.getElementById('quoteForm');
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
-    const success = document.createElement('div');
-    success.className = 'form-success';
-    success.innerHTML = '<strong>Thank you.</strong> Your request is in. We\'ll reach out within two business days.';
-    form.innerHTML = '';
-    form.appendChild(success);
-  });
+    alertBox.classList.remove('is-shown');
+    var ok = Object.keys(checks).map(validateField).every(Boolean);
+    ok = validateServices() && ok;
+    if (!ok) {
+      var first = form.querySelector('.has-error .input, .has-error input');
+      if (first) first.focus();
+      return;
+    }
+    submitBtn.setAttribute('aria-busy', 'true');
+    submitBtn.querySelector('.btn-label').textContent = 'Sending...';
 
+    var endpoint = form.getAttribute('data-endpoint');
+    var done = function () { submitBtn.removeAttribute('aria-busy'); submitBtn.querySelector('.btn-label').textContent = 'Get a free quote'; };
+
+    if (!endpoint) {
+      /* Demo mode: no endpoint configured yet */
+      setTimeout(function () { done(); showSuccess(); }, 900);
+      return;
+    }
+    fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+      .then(function (res) { if (!res.ok) throw new Error('Request failed'); done(); showSuccess(); })
+      .catch(function () { done(); alertBox.classList.add('is-shown'); });
+  });
 })();
 </script>
 </body>
