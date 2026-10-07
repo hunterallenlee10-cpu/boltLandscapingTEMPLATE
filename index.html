@@ -1102,7 +1102,7 @@ fieldset.field { border: 0; }
 </footer>
 
 <!-- Mobile call bar -->
-<div class="callbar" id="callbar">
+<div class="callbar is-hidden" id="callbar">
   <a class="icon-btn" href="tel:+16105550147" aria-label="Call (610) 555-0147"><i class="ph ph-phone" aria-hidden="true"></i></a>
   <a class="btn btn-primary" href="#quote">Get a free quote</a>
 </div>
@@ -1136,6 +1136,7 @@ fieldset.field { border: 0; }
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     menuBtn.querySelector('i').className = open ? 'ph ph-x' : 'ph ph-list';
+    if (typeof updateCallbar === 'function') updateCallbar();
   }
   menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('is-open')); });
   menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
@@ -1183,10 +1184,17 @@ fieldset.field { border: 0; }
     });
   });
 
-  /* Mobile call bar hides while the quote form is on screen */
+  /* Mobile call bar: shown only after the hero, hidden over the quote form and while the menu is open */
   var callbar = document.getElementById('callbar');
+  var barState = { hero: true, quote: false };
+  function updateCallbar() {
+    callbar.classList.toggle('is-hidden', barState.hero || barState.quote || menu.classList.contains('is-open'));
+  }
   new IntersectionObserver(function (entries) {
-    callbar.classList.toggle('is-hidden', entries[0].isIntersecting);
+    barState.hero = entries[0].isIntersecting; updateCallbar();
+  }).observe(document.querySelector('.hero-ctas'));
+  new IntersectionObserver(function (entries) {
+    barState.quote = entries[0].isIntersecting; updateCallbar();
   }, { threshold: 0.15 }).observe(document.getElementById('quote'));
 
   /* Quote form: inline validation, loading, error and success states */
